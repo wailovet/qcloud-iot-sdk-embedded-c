@@ -41,7 +41,7 @@ FEATURE_AUTH_MODE				        = KEY
 FEATURE_AUTH_WITH_NOTLS					= n
 
 # 是否使能设备动态注册
-FEATURE_DEV_DYN_REG_ENABLED             = n
+FEATURE_DEV_DYN_REG_ENABLED             = y
 
 # 是否打开日志上报云端功能
 FEATURE_LOG_UPLOAD_ENABLED              = n
