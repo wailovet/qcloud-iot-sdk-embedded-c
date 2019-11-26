@@ -47,7 +47,7 @@ int main()
 
     ret = HAL_GetDevInfo(&sDevInfo);
  
-    int nRtn = get_mac(sDevInfo.device_name, sizeof(szMac));
+    int nRtn = get_mac(sDevInfo.device_name, sizeof(sDevInfo.device_name));
     if (QCLOUD_RET_SUCCESS == IOT_DynReg_Device(&sDevInfo) && nRtn > 0)
     {
         Log_d("dynamic register success,productID: %s, devName: %s, device_secret: %s", sDevInfo.product_id, sDevInfo.device_name, sDevInfo.device_secret);
