@@ -55,9 +55,15 @@ int main(int argc, char **argv)
 
     if (!strcmp(argv[1], "get_device_secret"))
     {
-        strcpy(sDevInfo.product_id,argv[2]); 
-        strcpy(sDevInfo.product_secret,argv[3]); 
-        
+        if (argc < 5)
+        {
+            printf("[error]  txc_ouxuanac get_device_secret [product_id] [product_secret] [device_name]\n");
+            return 0;
+        }
+        strcpy(sDevInfo.product_id, argv[2]);
+        strcpy(sDevInfo.product_secret, argv[3]);
+        strcpy(sDevInfo.device_name, argv[4]);
+
         code = get_device_secret(&sDevInfo);
         if (code == QCLOUD_RET_SUCCESS)
         {
