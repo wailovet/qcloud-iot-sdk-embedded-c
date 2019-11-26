@@ -39,9 +39,19 @@ ifeq ($(FEATURE_AUTH_MODE),CERT)
 CFLAGS += -DAUTH_MODE_CERT
 endif
 
-.PHONY: mqtt_sample ota_mqtt_sample ota_coap_sample shadow_sample coap_sample gateway_sample multi_thread_mqtt_sample dynreg_dev_sample
+.PHONY: mqtt_sample ota_mqtt_sample ota_coap_sample shadow_sample coap_sample gateway_sample multi_thread_mqtt_sample dynreg_dev_sample ouxuanac_sample
 
-all: mqtt_sample ota_mqtt_sample ota_coap_sample shadow_sample coap_sample gateway_sample multi_thread_mqtt_sample dynreg_dev_sample
+all: mqtt_sample ota_mqtt_sample ota_coap_sample shadow_sample coap_sample gateway_sample multi_thread_mqtt_sample dynreg_dev_sample ouxuanac_sample
+
+
+
+ouxuanac_sample:
+	$(TOP_Q) \
+	$(PLATFORM_CC) $(CFLAGS) $(SAMPLE_DIR)/ouxuanac/$@.c $(LDFLAGS) -o $@
+
+	$(TOP_Q) \
+	mv $@ $(FINAL_DIR)/bin
+	
 
 ifneq (,$(filter -DMQTT_COMM_ENABLED,$(CFLAGS)))
 mqtt_sample:
@@ -63,7 +73,6 @@ multi_thread_mqtt_sample:
 	$(TOP_Q) \
 	mv $@ $(FINAL_DIR)/bin
 endif
-
 ifneq (,$(filter -DDEV_DYN_REG_ENABLED,$(CFLAGS)))
 dynreg_dev_sample:
 	$(TOP_Q) \
