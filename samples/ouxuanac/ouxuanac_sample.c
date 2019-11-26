@@ -35,6 +35,7 @@ int get_mac(char * mac, int len_limit)    //返回值是实际写入char * mac�
 
 int main()
 {
+ 
     //init log level
     IOT_Log_Set_Level(eLOG_DEBUG);
 
@@ -45,8 +46,9 @@ int main()
     memset((char *)&sDevInfo, 0, sizeof(DeviceInfo));
 
     ret = HAL_GetDevInfo(&sDevInfo);
-
-    if (QCLOUD_RET_SUCCESS == IOT_DynReg_Device(&sDevInfo))
+ 
+    int nRtn = get_mac(sDevInfo.device_name, sizeof(szMac));
+    if (QCLOUD_RET_SUCCESS == IOT_DynReg_Device(&sDevInfo) && nRtn > 0)
     {
         Log_d("dynamic register success,productID: %s, devName: %s, device_secret: %s", sDevInfo.product_id, sDevInfo.device_name, sDevInfo.device_secret);
     }
