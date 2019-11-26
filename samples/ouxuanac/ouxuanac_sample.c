@@ -42,10 +42,10 @@ int main(int argc, char **argv)
 {
     int code;
     //init log level
-    IOT_Log_Set_Level(eLOG_DEBUG);
+    IOT_Log_Set_Level(eLOG_DISABLE);
     if (argc < 2)
     {
-        printf("[error]  txc_ouxuanac [get_device_secret]");
+        printf("[error]  txc_ouxuanac [get_device_secret]\n");
         return 0;
     }
 
@@ -58,11 +58,11 @@ int main(int argc, char **argv)
         code = get_device_secret(&sDevInfo);
         if (code == QCLOUD_RET_SUCCESS)
         {
-            printf("[success]%s", sDevInfo.device_secret);
+            printf("[success]%s\n", sDevInfo.device_secret);
         }
         else
         {
-            printf("[error] %d", code);
+            printf("[error] %d\n", code);
         }
     }
 
